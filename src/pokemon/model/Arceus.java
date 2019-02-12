@@ -6,7 +6,7 @@ public class Arceus extends Pokemon implements Normal
 	{
 		super(number, name);
 	}
-	
+
 	public void smack()
 	{
 		System.out.println("WEEWOOKACHOW");
