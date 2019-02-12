@@ -37,6 +37,20 @@ public class PokedexController
 		
 	}
 	
+	public boolean isInt(String text)
+	{
+		try
+		{
+			Integer.parseInt(text);
+			return true;
+		}
+		catch(NumberFormatException error)
+		{
+			JOptionPane.showInputDialog(appFrame, "You need to use double Type value.")
+		}
+		return false;
+	}
+	
 	public void updatePokemon(int index, String [] data)
 	{
 		if (data.length == 5)
