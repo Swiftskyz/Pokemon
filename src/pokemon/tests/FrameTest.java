@@ -38,9 +38,9 @@ class FrameTest
 	public void testSetupFrame()
 	{
 		assertNotNull(testedFrame.getTitle(),"You need a title");
-		assertTrue( testedFrame.getTitle().contains("Pokemon"), "Your title needs a reference to Pokemon");
+		assertTrue(testedFrame.getTitle().contains("Pokemon"), "Your title needs a reference to Pokemon");
 		assertFalse(testedFrame.isResizable(), "Your Pokedex app should not be resizable");
-		assertTrue( testedFrame.getContentPane() instanceof PokedexPanel, "You need a PokemonPanel inside the frame");
+		assertTrue(testedFrame.getContentPane() instanceof PokedexPanel, "You need a PokemonPanel inside the frame");
 	}
 
 }
