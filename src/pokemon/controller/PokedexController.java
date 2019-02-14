@@ -9,7 +9,6 @@ import pokemon.model.*;
 
 public class PokedexController
 {
-	
 	private ArrayList<Pokemon> pokemonList;
 	private PokedexFrame appFrame;
 	

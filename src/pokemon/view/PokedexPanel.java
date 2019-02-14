@@ -31,10 +31,16 @@ public class PokedexPanel extends JPanel
 	
 	private PokedexPanel testedPanel;
 	
+	private ImageIcon pokemonIcon;
+	
 	public PokedexPanel(PokedexController app)
 	{
 		super();
 		this.app = app;
+		
+		this.appLayout = new SpringLayout();
+		
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/Primal_Groudon.png"))
 		
 		numberField = new JTextField("0");
 		nameField = new JTextField("My Pokename");
@@ -49,11 +55,11 @@ public class PokedexPanel extends JPanel
 		attackLabel = new JLabel("This pokemon attack level is");
 		enhanceLabel = new JLabel("This pokemon enhancement level is");
 		nameLabel = new JLabel("My name is");
-		imageLabel = new JLabel("pokemon goes here");
-		
+		imageLabel = new JLabel("pokemon goes here", pokemonIcon, JLabel.CENTER);
 		changeButton = new JButton("Click here to change the pokevalues");
 		pokedexDropdown = new JComboBox<String>(); // stub
 		
+		setupDropdown();
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -82,6 +88,9 @@ public class PokedexPanel extends JPanel
 		this.add(enhanceLabel);
 		this.add(attackLabel);
 		this.add(nameLabel);
+		
+		imageLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		imageLabel.setHorizontalTextPosition(JLabel.CENTER);
 	}
 	
 	private void setupLayout()
@@ -89,9 +98,53 @@ public class PokedexPanel extends JPanel
 		
 	}
 	
+	private void sendDataToController()
+	{
+		int index = pokedexDropdown.getSelectedIndex();
+		
+		if (app.isInt(attackField.getText()) && app.isDouble(enhancementField.getText()) && app.isInt(healthField.getText()))
+		{
+			String [] data = new String[5];
+			
+			//insert code here
+			app.updatePokemon(index, data);
+		}
+	}
+	
+	private void changeImageDisplay(String name)
+	{
+		String path = "/pokemon/view/images/";
+		String defaultName = "ultraball";
+		String extension = ".png";
+		try
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + name.toLowerCase() + extension));
+		}
+		imageLabel.setIcon(pokemonIcon);
+		repaint();
+	}
+	
 	private void setupListeners()
 	{
+		changeButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				sendDataToController();
+			}
+		});
 		
+		pokedexDropdown.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				String name = pokedexDropdown.getSelectedItem().toString();
+				changeImageDisplay(name);
+			}
+		});
 	}
-}
 	
+}
+
+	
+
