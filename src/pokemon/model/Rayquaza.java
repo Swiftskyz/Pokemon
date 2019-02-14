@@ -16,4 +16,14 @@ public class Rayquaza extends Pokemon implements Flying
 	{
 		return 123456;
 	}
+	
+	public Rayquaza()
+	{
+		super(98, "Rayquaza");
+	}
+	
+	public Rayquaza(String name)
+	{
+		super(98, name);
+	}
 }

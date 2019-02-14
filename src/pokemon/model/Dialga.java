@@ -16,4 +16,14 @@ public class Dialga extends Pokemon implements Steel
 	{
 		return 1234567;
 	}
+	
+	public Dialga()
+	{
+		super(200, "Dialga");
+	}
+	
+	public Dialga(String name)
+	{
+		super(200, name);
+	}
 }

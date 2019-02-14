@@ -16,4 +16,15 @@ public class Arceus extends Pokemon implements Normal
 	{
 		return 12345;
 	}
+	
+	public Arceus()
+	{
+		super(98, "Arceus");
+	}
+	
+	public Arceus(String name)
+	{
+		super(98, name);
+	}
+	
 }

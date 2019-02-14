@@ -22,7 +22,10 @@ public class PokedexController
 	private void addPokemon()
 	{
 		pokemonList.add(new Arceus(0, null));
+		pokemonList.add(new Rayquaza(0, null));
 		pokemonList.add(new Dialga(0, null));
+		pokemonList.add(new Dialga(0, null));
+		pokemonList.add(new Giratina(0, null));
 	}
 	
 	public void start()
@@ -72,6 +75,12 @@ public class PokedexController
 			names[index] = pokemonList.get(index).getName();
 		}
 		return names;
+	}
+
+	public boolean isDouble(String text)
+	{
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	
