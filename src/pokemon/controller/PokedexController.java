@@ -1,5 +1,8 @@
 package pokemon.controller;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -48,7 +51,7 @@ public class PokedexController
 		}
 		catch(NumberFormatException error)
 		{
-			JOptionPane.showInputDialog(appFrame, "You need to use double Type value.")
+			JOptionPane.showInputDialog(appFrame, "You need to use double Type value.");
 		}
 		return false;
 	}
@@ -82,6 +85,56 @@ public class PokedexController
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public Object getFrame()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void savePokedex()
+	{
+		try
+		{
+			FileOutputStream saveStream = new FileOutputStream(saveFile);
+			ObjectOutputStream output = new ObjectOutputStream(saveStream);
+			output.writeObject(pokemonList);
+			output.close();
+			saveStream.close();
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private void loadPokedex()
+	{
+		try
+		{
+			ArrayList<Pokemon> saved = new ArrayList<Pokemon>();
+			FileInputStream inputStream = new FileInputStream(saveFile);
+			ObjectInputStream input = new ObjectInputStream(InputStream);
+			saved = (ArrayList<Pokemon>) input.readObject();
+			input.close();
+			inputStream.close();
+			pokemonList = saved;
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, "No Save File", "Loading Pokemon", JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch (ClassNotFoundException pokemonError)
+		{
+			JOptionPane.showMessageDialog(appFrame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

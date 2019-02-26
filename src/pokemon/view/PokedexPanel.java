@@ -40,7 +40,7 @@ public class PokedexPanel extends JPanel
 		
 		this.appLayout = new SpringLayout();
 		
-		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/Primal_Groudon.png"))
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/pokemon/view/images/Primal_Groudon.png"));
 		
 		numberField = new JTextField("0");
 		nameField = new JTextField("My Pokename");
@@ -131,6 +131,14 @@ public class PokedexPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				sendDataToController();
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				app.savePokedex();
 			}
 		});
 		
