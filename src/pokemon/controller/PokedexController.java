@@ -1,5 +1,6 @@
 package pokemon.controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -69,6 +70,19 @@ public class PokedexController
 		}
 	}
 	
+	public String [] getPokeData(int index)
+	{
+		String [] data = new String [0];
+		Pokemon current = pokemonList.get(index);
+		data[0] = current.getAttackPoints() + "";
+		data[1] = current.getEnhancementModifier() + "";
+		data[2] = current.getHealthPoints() + "";
+		data[3] = current.getName() + "";
+		data[0] = current.isCanEvolve() + "";
+		data[0] = current.getNumber() + "";
+		return data;
+	}
+	
 	public String[] buildPokedexText()
 	{
 		String [] names = new String [pokemonList.size()];
@@ -129,6 +143,8 @@ public class PokedexController
 			JOptionPane.showMessageDialog(appFrame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+
 	
 	
 	

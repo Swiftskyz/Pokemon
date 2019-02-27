@@ -12,6 +12,7 @@ public class PokedexPanel extends JPanel
 	private SpringLayout appLayout;
 	
 	private JButton changeButton;
+	private JButton saveButton;
 	private JComboBox pokedexDropdown;
 	
 	private JTextField numberField;
@@ -57,6 +58,7 @@ public class PokedexPanel extends JPanel
 		nameLabel = new JLabel("My name is");
 		imageLabel = new JLabel("pokemon goes here", pokemonIcon, JLabel.CENTER);
 		changeButton = new JButton("Click here to change the pokevalues");
+		saveButton = new JButton("Big Save");
 		pokedexDropdown = new JComboBox<String>(); // stub
 		
 		setupDropdown();
@@ -88,6 +90,7 @@ public class PokedexPanel extends JPanel
 		this.add(enhanceLabel);
 		this.add(attackLabel);
 		this.add(nameLabel);
+		this.add(saveButton);
 		
 		imageLabel.setVerticalTextPosition(JLabel.BOTTOM);
 		imageLabel.setHorizontalTextPosition(JLabel.CENTER);
@@ -152,7 +155,22 @@ public class PokedexPanel extends JPanel
 		});
 	}
 	
+	private void updateFields(int index)
+	{
+		String [] data = app.getPokeData(index);
+		
+		attackField.setText(data[0]);
+		enhancementField.setText(data[1]);
+		healthField.setText(data[2]);
+		nameField.setText(data[3]);
+		evolveField.setText(data[4]);
+		numberField.setText(data[5]);
+	}
+	
+	
+	
 }
+
 
 	
 
