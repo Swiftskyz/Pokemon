@@ -1,5 +1,6 @@
 package pokemon.controller;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,7 +28,6 @@ public class PokedexController
 	{
 		pokemonList.add(new Arceus(0, null));
 		pokemonList.add(new Rayquaza(0, null));
-		pokemonList.add(new Dialga(0, null));
 		pokemonList.add(new Dialga(0, null));
 		pokemonList.add(new Giratina(0, null));
 	}
@@ -110,6 +110,7 @@ public class PokedexController
 	{
 		try
 		{
+			String saveFile = null;
 			FileOutputStream saveStream = new FileOutputStream(saveFile);
 			ObjectOutputStream output = new ObjectOutputStream(saveStream);
 			output.writeObject(pokemonList);
@@ -118,7 +119,7 @@ public class PokedexController
 		}
 		catch(IOException error)
 		{
-			JOptionPane.showMessageDialog(appFrame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showInputDialog(appFrame);
 		}
 	}
 	
@@ -127,8 +128,9 @@ public class PokedexController
 		try
 		{
 			ArrayList<Pokemon> saved = new ArrayList<Pokemon>();
+			String saveFile = null;
 			FileInputStream inputStream = new FileInputStream(saveFile);
-			ObjectInputStream input = new ObjectInputStream(InputStream);
+			ObjectInputStream input = new ObjectInputStream(inputStream);
 			saved = (ArrayList<Pokemon>) input.readObject();
 			input.close();
 			inputStream.close();
@@ -136,11 +138,11 @@ public class PokedexController
 		}
 		catch(IOException error)
 		{
-			JOptionPane.showMessageDialog(appFrame, "No Save File", "Loading Pokemon", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showInputDialog(appFrame);
 		}
 		catch (ClassNotFoundException pokemonError)
 		{
-			JOptionPane.showMessageDialog(appFrame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showInputDialog(appFrame);
 		}
 	}
 
