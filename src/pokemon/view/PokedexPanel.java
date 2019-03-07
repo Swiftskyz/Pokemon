@@ -80,7 +80,7 @@ public class PokedexPanel extends JPanel
 		nameLabel = new JLabel("My name is");
 		appLayout.putConstraint(SpringLayout.NORTH, nameLabel, 5, SpringLayout.NORTH, attackField);
 		appLayout.putConstraint(SpringLayout.EAST, nameLabel, -6, SpringLayout.WEST, nameField);
-		imageLabel = new JLabel("pokemon goes here", pokemonIcon, JLabel.CENTER);
+		imageLabel = new JLabel("pokemon goes here", new ImageIcon(PokedexPanel.class.getResource("/pokemon/view/images/Primal_Groudon.png")), JLabel.CENTER);
 		appLayout.putConstraint(SpringLayout.NORTH, imageLabel, 234, SpringLayout.SOUTH, nameField);
 		appLayout.putConstraint(SpringLayout.WEST, imageLabel, 136, SpringLayout.WEST, this);
 		changeButton = new JButton("Click here to change the pokevalues");
